@@ -1,0 +1,53 @@
+/* GameBoard.css */
+
+/* Container for both boards, side by side */
+.boards-row {
+  display: flex;
+  gap: 40px;           /* space between the two boards */
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Each board wrapper */
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Rest of your styles */
+.game-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000;
+  text-align: center;
+}
+
+.controls, .bottom-controls {
+  margin-top: 10px;
+}
+
+button {
+  margin: 5px;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  background-color: #ddd;
+}
