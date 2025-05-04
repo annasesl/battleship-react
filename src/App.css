@@ -1,0 +1,39 @@
+/* App.css */
+.App {
+  text-align: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  grid-template-rows: repeat(10, 40px);
+  gap: 5px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.board-cell {
+  width: 40px;
+  height: 40px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cell-hit {
+  background-color: red;
+}
+
+.cell-miss {
+  background-color: lightblue;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
