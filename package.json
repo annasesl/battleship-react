@@ -31,4 +31,8 @@
       "last 1 safari version"
     ]
   }
+  "dependencies": {
+  "web-vitals": "^2.1.4",
+  // …your other deps
+}
 }
