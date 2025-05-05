@@ -86,7 +86,7 @@ const GameBoard = () => {
   const handleLongPress = (callback) => (r, c) => {
     longPressTimeout.current = setTimeout(() => {
       callback(r, c);
-    }, 500);
+    }, 250);
   };
 
   const cancelLongPress = () => {
