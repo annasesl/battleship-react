@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './GameBoard.css';
 
 const GRID_SIZE = 10;
@@ -60,6 +60,8 @@ const GameBoard = () => {
   const [playerHits, setPlayerHits] = useState([]);
   const [opponentHits, setOpponentHits] = useState([]);
 
+  const longPressTimeout = useRef(null);
+
   const handlePlayerClick = (r, c) => {
     if (!opponentHits.find(h => h.r === r && h.c === c)) {
       const res = playerBoard[r][c] === 'ship' ? 'hit' : 'miss';
@@ -79,6 +81,16 @@ const GameBoard = () => {
 
   const handleOpponentDouble = (r, c) => {
     setPlayerHits(playerHits.filter(h => !(h.r === r && h.c === c)));
+  };
+
+  const handleLongPress = (callback) => (r, c) => {
+    longPressTimeout.current = setTimeout(() => {
+      callback(r, c);
+    }, 500);
+  };
+
+  const cancelLongPress = () => {
+    clearTimeout(longPressTimeout.current);
   };
 
   const randomize = () => setPlayerBoard(generateRandomBoard());
@@ -111,6 +123,8 @@ const GameBoard = () => {
                   className="cell"
                   onClick={() => onClick(r, c)}
                   onDoubleClick={() => onDoubleClick(r, c)}
+                  onTouchStart={() => handleLongPress(onDoubleClick)(r, c)}
+                  onTouchEnd={cancelLongPress}
                   style={{ backgroundColor: bg }}
                 />
               );
@@ -132,12 +146,12 @@ const GameBoard = () => {
         <div className="board-container">
           <h2>Player's Board</h2>
           {renderBoard(playerBoard, opponentHits, handlePlayerClick, handlePlayerDouble, true)}
-          <p className="hint">💡 Double-click to undo a hit/miss (Desktop only)</p>
+          <p className="hint">💡 Double-click or long-press to undo (mobile/desktop)</p>
         </div>
         <div className="board-container">
           <h2>Opponent's Board</h2>
           {renderBoard(opponentBoard, playerHits, handleOpponentClick, handleOpponentDouble, false)}
-          <p className="hint">💡 Double-click to undo a hit/miss (Desktop only)</p>
+          <p className="hint">💡 Double-click or long-press to undo (mobile/desktop)</p>
         </div>
       </div>
 
