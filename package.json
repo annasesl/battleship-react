@@ -32,7 +32,6 @@
     ]
   }
   "dependencies": {
-  "web-vitals": "^2.1.4",
-  // …your other deps
+  "web-vitals": "^2.1.4"
 }
 }
