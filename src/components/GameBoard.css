@@ -1,195 +1,94 @@
-/* GameBoard.css - Mobile responsive version */
+/* GameBoard.css */
 
-/* Container for the game */
-.game-board {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-/* Container for both boards */
+/* Flex layout for boards */
 .boards-row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
-/* Each board wrapper with spacing */
 .board-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 30px;
-  width: 100%;
-  max-width: 350px;
 }
 
-/* Board title */
-.board-container h2 {
-  margin: 10px 0;
-  font-size: 1.2rem;
+.game-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
-/* Make tables responsive */
 table {
   border-collapse: collapse;
-  width: 100%;
-  max-width: 350px;
 }
 
-/* Cell styling for better touch targets */
 td, th {
-  min-width: 28px;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border: 1px solid #000;
   text-align: center;
-  font-size: 0.9rem;
-  padding: 0;
-  position: relative;
-}
-
-/* Make cells square and touch-friendly */
-.cell {
-  width: 100%;
-  height: 100%;
-  min-width: 28px;
-  min-height: 28px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease;
 }
 
-/* Improve touch target size */
-.cell:after {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  z-index: 1;
+.cell:active {
+  background-color: #ccc;
 }
 
-/* Button containers */
-.top-controls, .controls {
+.controls, .top-controls {
+  margin-top: 10px;
   display: flex;
+  gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 10px 0;
-  width: 100%;
-  gap: 10px;
 }
 
-/* Larger, touch-friendly buttons */
 button {
-  min-width: 120px;
-  min-height: 44px;
   margin: 5px;
-  padding: 8px 15px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  background-color: #f8f8f8;
+  padding: 10px 20px;
   font-size: 16px;
+  min-width: 100px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s;
-  touch-action: manipulation;
 }
 
-button:hover, button:focus {
-  background-color: #ddd;
+button:focus {
   outline: none;
 }
 
-button:active {
-  transform: scale(0.98);
+button:hover {
+  background-color: #ddd;
 }
 
-/* Different states feedback */
-.hit-selected {
-  background-color: #4caf50 !important;
-  color: white;
-}
-
-.miss-selected {
-  background-color: #9e9e9e !important;
-  color: white;
-}
-
-/* Game status display */
-.game-status {
-  margin: 15px 0;
-  padding: 10px;
-  text-align: center;
-  border-radius: 8px;
-  background-color: #f1f1f1;
-  width: 100%;
-  max-width: 350px;
-}
-
-/* Media queries for larger screens */
-@media (min-width: 768px) {
+/* Mobile styles */
+@media (max-width: 600px) {
   .boards-row {
-    flex-direction: row;
-    justify-content: center;
-    gap: 40px;
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .board-container {
-    margin-bottom: 0;
-  }
-  
-  td, th {
-    min-width: 32px;
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
-  }
-  
-  .cell {
-    min-width: 32px;
-    min-height: 32px;
-  }
-  
-  .board-container h2 {
-    font-size: 1.4rem;
-  }
-}
 
-/* Portrait/landscape orientation specific adjustments */
-@media (orientation: landscape) and (max-height: 600px) {
-  .game-board {
-    padding: 5px;
-  }
-  
-  .boards-row {
-    flex-direction: row;
-    gap: 20px;
-  }
-  
-  .board-container h2 {
-    font-size: 1rem;
-    margin: 5px 0;
-  }
-  
   td, th {
-    min-width: 24px;
-    width: 24px;
-    height: 24px;
-    font-size: 0.8rem;
+    width: 8vw;
+    height: 8vw;
+    font-size: 10px;
   }
-  
-  .cell {
-    min-width: 24px;
-    min-height: 24px;
+
+  .controls, .top-controls {
+    flex-direction: column;
+    align-items: center;
   }
-  
+
   button {
-    min-height: 36px;
+    width: 80%;
+    margin: 8px 0;
     font-size: 14px;
+  }
+
+  .board-container h2 {
+    font-size: 16px;
   }
 }
