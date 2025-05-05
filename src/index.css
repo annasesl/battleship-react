@@ -1,16 +1,18 @@
-/* src/index.css */
+/* index.css */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start;
+  min-height: 100vh;
   background-color: #f4f4f4;
 }
 
 #root {
   width: 100%;
   max-width: 800px;
+  padding: 10px;
+  box-sizing: border-box;
 }
